@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.review">
+
+    <!-- 리뷰 추가 -->
+    <insert id="insertReview">
+        INSERT INTO reviews (reviewWrite, reviewView)
+        VALUES (#{reviewWrite}, #{reviewView})
+    </insert>
+
+    <!-- 특정 리뷰 조회 -->
+    <select id="getReview" resultType="ReviewDTO">
+        SELECT * FROM reviews WHERE reviewWrite = #{reviewWrite}
+    </select>
+
+    <!-- 전체 리뷰 목록 조회 -->
+    <select id="getAllReviews" resultType="ReviewDTO">
+        SELECT * FROM reviews
+    </select>
+
+    <!-- 리뷰 수정 -->
+    <update id="updateReview">
+        UPDATE reviews 
+        SET reviewView = #{reviewView}
+        WHERE reviewWrite = #{reviewWrite}
+    </update>
+
+    <!-- 리뷰 삭제 -->
+    <delete id="deleteReview">
+        DELETE FROM reviews WHERE reviewWrite = #{reviewWrite}
+    </delete>
+
+</mapper>
